@@ -71,7 +71,7 @@ class Client extends Resource
 
 	/**
 	 * Calls a webservice and return HTTP status code, headers and body
-   * @param string $verb The HTTP verb to use (GET, POST or DELETE are supported)
+	 * @param string $verb The HTTP verb to use (GET, POST or DELETE are supported)
 	 * @param string $url The webservice URL to target
 	 * @param array $data An optional data array (for POST queries)
 	 * @throws \Keyyo\Manager\Exception\WebserviceQueryException
@@ -154,7 +154,6 @@ class Client extends Resource
 	/**
 	 *
 	 * @param array $call_result An array containing three values: HTTP status code (as integer), headers (as array), body (as string)
-	 * @return array An array containing three values: HTTP status code (as integer), headers (as array), body (as string)
 	 * @throws \Keyyo\Manager\Exception\Exception
 	 * @return array An associative array containing the result of the query
 	 */
