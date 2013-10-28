@@ -302,6 +302,7 @@ class Resource implements \Iterator, \ArrayAccess, \Countable
 		if (isset($resource_contents['_embedded']))
 		{
 			$this->is_collection = true;
+			$this->contents = array();
 			foreach ($resource_contents['_embedded'] as $sub_resources_contents)
 			{
 				foreach ($sub_resources_contents as $sub_resource_contents)
