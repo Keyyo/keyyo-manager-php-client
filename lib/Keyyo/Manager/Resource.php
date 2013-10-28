@@ -100,8 +100,8 @@ class Resource implements \Iterator, \ArrayAccess, \Countable
 	{
 		$this->fetch();
 
-		if (!isset($this->properties))
-			throw new \Keyyo\Exception\NoSuchPropertyException('No such property: ' . $property);
+		if (!isset($this->properties[$property]))
+			throw new \Keyyo\Manager\Exception\NoSuchPropertyException('No such property: ' . $property);
 
 		return $this->properties[$property];
 	}
