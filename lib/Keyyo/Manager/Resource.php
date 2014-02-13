@@ -64,11 +64,13 @@ class Resource implements \Iterator, \ArrayAccess, \Countable
 	 * Constructs a resource
 	 * @param \Keyyo\Manager\Client $client A reference to the client
 	 * @param string $url The absolute URL of this resource
+	 * @param boolean $is_collection Whether this resource is a collection (as opposed to an individial resource)
 	 * @param string $resource_contents An optional array containing the contents to load this resource from
 	 */
-	public function __construct(\Keyyo\Manager\Client $client, $url, $resource_contents = null)
+	public function __construct(\Keyyo\Manager\Client $client, $url, $is_collection, $resource_contents = null)
 	{
 		$this->client = $client;
+		$this->is_collection = $is_collection;
 		$this->url = $url;
 
 		if (is_array($resource_contents))
@@ -84,10 +86,20 @@ class Resource implements \Iterator, \ArrayAccess, \Countable
 	public function __call($method_name, array $parameters)
 	{
 		$url = $this->url . '/' . $method_name;
-		if (isset($parameters[0]))
-			$url .= '/' . $parameters[0];
+		$is_collection = true;
 
-		return new Resource($this->client, $url);
+		if (isset($parameters[0]))
+		{
+			if (is_array($parameters[0]))
+				$url .= '/?' . http_build_query(['filters' => $parameters[0]]);
+			else
+			{
+				$url .= '/' . $parameters[0];
+				$is_collection = false;
+			}
+		}
+
+		return new Resource($this->client, $url, $is_collection);
 	}
 
 	/**
@@ -126,7 +138,7 @@ class Resource implements \Iterator, \ArrayAccess, \Countable
 	public function create(array $properties = array())
 	{
 		$resource_contents = $this->client->query('POST', $this->url, $properties);
-		return new Resource($this->client, $resource_contents['_links']['self']['href'], $resource_contents);
+		return new Resource($this->client, $resource_contents['_links']['self']['href'], false, $resource_contents);
 	}
 
 	/**
@@ -169,7 +181,7 @@ class Resource implements \Iterator, \ArrayAccess, \Countable
 		$value = current($this->contents);
 
 		if (!($value instanceof Resource))
-			$value = $this->contents[$this->key()] = new Resource($this->client, $this->client->to_url($value['_links']['self']['href']), $value);
+			$value = $this->contents[$this->key()] = new Resource($this->client, $value['_links']['self']['href'], false, $value);
 
 		return $value;
 	}
@@ -299,20 +311,21 @@ class Resource implements \Iterator, \ArrayAccess, \Countable
 	 */
 	private function initialize_from_resource_contents($resource_contents)
 	{
-		if (isset($resource_contents['_embedded']))
+		if ($this->is_collection)
 		{
-			$this->is_collection = true;
 			$this->contents = array();
-			foreach ($resource_contents['_embedded'] as $sub_resources_contents)
+			if (isset($resource_contents['_embedded']))
 			{
-				foreach ($sub_resources_contents as $sub_resource_contents)
-					$this->contents[] = $sub_resource_contents;
+				foreach ($resource_contents['_embedded'] as $sub_resources_contents)
+				{
+					foreach ($sub_resources_contents as $sub_resource_contents)
+						$this->contents[] = $sub_resource_contents;
+				}
 			}
 			$this->properties = null;
 		}
 		else
 		{
-			$this->is_collection = false;
 			$this->contents = $resource_contents;
 			$this->properties = $this->filter_properties($this->contents);
 		}

@@ -50,7 +50,7 @@ class Client extends Resource
 	 */
 	public function __construct($version, $access_token, array $options = array())
 	{
-		parent::__construct($this, $this->get_webservice_url() . '/' . $version);
+		parent::__construct($this, $this->get_webservice_url() . '/' . $version, false);
 		$this->access_token = $access_token;
 
 		$this->options['localized_numbers'] = !empty($options['localized_numbers']);
