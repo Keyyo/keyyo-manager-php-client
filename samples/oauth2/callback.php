@@ -66,5 +66,5 @@ if (isset($response->error))
 
 // Output the access token and its lifetime
 
-echo 'Your access token is: ' . $response->access_token, '<br />';
-echo 'It expires in: ' . $response->expires_in, ' seconds<br />';
+echo 'Your access token is: ', $response->access_token, '<br />';
+echo 'It expires in: ', $response->expires_in, ' seconds<br />';
