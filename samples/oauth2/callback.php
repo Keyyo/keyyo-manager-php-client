@@ -40,11 +40,11 @@ $curl = curl_init($keyyo_token_endpoint);
 
 curl_setopt($curl, CURLOPT_POST, true);
 curl_setopt($curl, CURLOPT_POSTFIELDS, array(
-	'client_id'		  => $client_id,
-	'client_secret'	=> $client_secret,
+	'client_id'     => $client_id,
+	'client_secret' => $client_secret,
 	'grant_type'    => 'authorization_code',
-	'code'			    => $_GET['code'],
-	'state'			    => $_GET['state']
+	'code'          => $_GET['code'],
+	'state'         => $_GET['state']
 ));
 
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
