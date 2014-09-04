@@ -25,7 +25,7 @@
 
 require_once __DIR__ . '/config.php';
 
-// This is the Keyyo authorization URL (which can also be found in your application's settings form at https://api.keyyo.com/developers/apps)
+// This is the Keyyo authorization URL (which can also be found on your application's settings form at https://api.keyyo.com/developers/apps)
 
 $keyyo_authorize_endpoint = 'https://ssl.keyyo.com/oauth2/authorize.php';
 
