@@ -38,6 +38,8 @@ try {
 
 	$service = $keyyo_manager->services('33123456789');
 
+	// Generate a CSI token and display its data
+
 	$generated_token = $service->csi_token()->create(['domain_mask' => '*.domain.com']);
 	echo 'Your generated token is ', $generated_token->token, '<br />';
 	echo 'Its duration is ', $generated_token->expires_in, ' seconds';
