@@ -27,7 +27,7 @@ require_once dirname(__FILE__) . '/../lib/Keyyo/autoload.php';
 
 // This is the OAuth2 access token that corresponds to a customer ID within Keyyo
 
-$access_token = 'my_oauth2_access_token';
+$access_token = '<your access token goes here (see oauth2 sample for a way to retrieve it)>';
 
 try {
 	// Instantiate a Manager client (version 1.0 here)
