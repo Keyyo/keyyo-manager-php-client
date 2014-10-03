@@ -113,7 +113,7 @@ class Client extends Resource
 			CURLOPT_RETURNTRANSFER => true,
 			CURLOPT_URL => $url,
 			CURLOPT_CUSTOMREQUEST => $verb,
-			CURLOPT_POSTFIELDS => $data,
+			CURLOPT_POSTFIELDS => http_build_query($data),
 			CURLOPT_HTTPHEADER => array('Authorization: Bearer ' . $this->access_token)
 		);
 		if (curl_setopt_array($curl_request, $curl_options) === false)
