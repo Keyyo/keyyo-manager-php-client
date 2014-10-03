@@ -40,7 +40,7 @@ try {
 
 	// Generate a CSI token and display its data
 
-	$generated_token = $service->csi_token()->create(['domain_mask' => '*.domain.com']);
+	$generated_token = $service->csi_token()->create(['domain_masks' => ['*.domain.com', 'domain2.com']]);
 	echo 'Your generated token is ', $generated_token->token, '<br />';
 	echo 'Its duration is ', $generated_token->expires_in, ' seconds';
 
