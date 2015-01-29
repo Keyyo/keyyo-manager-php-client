@@ -22,7 +22,7 @@
  */
 
 // Retrieve client ID & secret
-
+session_start();
 require_once __DIR__ . '/config.php';
 
 // This is the Keyyo authorization URL (which can also be found on your application's settings form at https://api.keyyo.com/developers/apps)
@@ -30,6 +30,5 @@ require_once __DIR__ . '/config.php';
 $keyyo_authorize_endpoint = 'https://ssl.keyyo.com/oauth2/authorize.php';
 
 // Redirect the browser to Keyyo's login/authorization form
-
-$authorize_url = sprintf('%s?client_id=%s&response_type=code&state=%s', $keyyo_authorize_endpoint, $client_id, md5(rand()));
+$authorize_url = sprintf('%s?client_id=%s&response_type=code&state=%s', $keyyo_authorize_endpoint, $client_id, session_id());
 header('Location: ' . $authorize_url);

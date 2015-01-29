@@ -20,11 +20,13 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
+session_start();
 
-// Check request variables
-
-if (!isset($_GET['state'], $_GET['code']))
-	die('Invalid request');
+// Check state
+if (isset($_GET["state"]) && $_GET["state"] != session_id()) {
+	header('Content-Type: application/json');
+	die(json_encode(["error" => "invalid_state", "error_description" => "Invalid state"]));
+}
 
 // Retrieve client ID & secret
 
@@ -44,7 +46,6 @@ curl_setopt($curl, CURLOPT_POSTFIELDS, array(
 	'client_secret' => $client_secret,
 	'grant_type'    => 'authorization_code',
 	'code'          => $_GET['code'],
-	'state'         => $_GET['state']
 ));
 
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
