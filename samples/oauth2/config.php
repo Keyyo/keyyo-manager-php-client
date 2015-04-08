@@ -25,3 +25,4 @@
 
 $client_id     = '<your client ID goes here>';
 $client_secret = '<your client secret goes here>';
+$redirect_uri  = 'https://domain.com/callback';

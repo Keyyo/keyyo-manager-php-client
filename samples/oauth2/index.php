@@ -29,6 +29,8 @@ require_once __DIR__ . '/config.php';
 
 $keyyo_authorize_endpoint = 'https://ssl.keyyo.com/oauth2/authorize.php';
 
+$_SESSION["oauth_state"] = uniqid();
+
 // Redirect the browser to Keyyo's login/authorization form
-$authorize_url = sprintf('%s?client_id=%s&response_type=code&state=%s', $keyyo_authorize_endpoint, $client_id, session_id());
+$authorize_url = sprintf("%s?client_id=%s&response_type=code&state=%s&redirect_uri=%s", $keyyo_authorize_endpoint, $client_id, $_SESSION["oauth_state"], $redirect_uri);
 header('Location: ' . $authorize_url);

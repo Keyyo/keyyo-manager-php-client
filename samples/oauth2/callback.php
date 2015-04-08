@@ -23,7 +23,7 @@
 session_start();
 
 // Check state
-if (isset($_GET["state"]) && $_GET["state"] != session_id()) {
+if (isset($_GET["state"]) && $_GET["state"] != $_SESSION["oauth_state"]) {
 	header('Content-Type: application/json');
 	die(json_encode(["error" => "invalid_state", "error_description" => "Invalid state"]));
 }
@@ -45,6 +45,7 @@ curl_setopt($curl, CURLOPT_POSTFIELDS, array(
 	'client_id'     => $client_id,
 	'client_secret' => $client_secret,
 	'grant_type'    => 'authorization_code',
+	'redirect_uri'  => $redirect_uri,
 	'code'          => $_GET['code'],
 ));
 
