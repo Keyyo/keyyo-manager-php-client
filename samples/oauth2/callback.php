@@ -34,7 +34,7 @@ require_once __DIR__ . '/config.php';
 
 // This is the Keyyo access token URL (which can also be found on your application's settings form at https://api.keyyo.com/developers/apps)
 
-$keyyo_token_endpoint = 'https://ssl.keyyo.com/oauth2/token.php';
+$keyyo_token_endpoint = 'https://api.keyyo.com/oauth2/token.php';
 
 // Send a cURL request using request's authorization code + state
 
