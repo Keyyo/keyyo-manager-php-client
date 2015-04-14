@@ -1,7 +1,7 @@
 keyyo-manager-client
 ====================
 
-Access to api.keyyo.com is only available in closed beta for now.
+[Please refer to the Keyyo Manager API Documentation](http://developers.keyyo.com)
 
-[Contact your Keyyo Sales Representative to join the beta](http://www.keyyo.com/fr/keyyo/contact.php?service=10)
+[Contact your Keyyo Sales Representative for more information](http://www.keyyo.com/fr/keyyo/contact.php?service=10)
 
