@@ -91,7 +91,7 @@ class Resource implements \Iterator, \ArrayAccess, \Countable
 		if (isset($parameters[0]))
 		{
 			if (is_array($parameters[0]))
-				$url .= '/?' . http_build_query(['filters' => $parameters[0]]);
+				$url .= '/?' . http_build_query(array('filters' => $parameters[0]));
 			else
 			{
 				$url .= '/' . $parameters[0];

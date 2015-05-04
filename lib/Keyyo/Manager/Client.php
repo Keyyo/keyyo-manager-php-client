@@ -148,7 +148,7 @@ class Client extends Resource
 
 		$body = substr($response, $header_size);
 
-		return [$http_status, $headers, $body];
+		return array($http_status, $headers, $body);
 	}
 
 	/**
