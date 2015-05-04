@@ -26,7 +26,7 @@ namespace Keyyo\Manager;
 /**
  * Represents a client of the Manager webservice provided by Keyyo
  *
- * @author Jérémy Touati <jtouati@keyyo.com>
+ * @author Jérémy Touati
  */
 class Client extends Resource
 {

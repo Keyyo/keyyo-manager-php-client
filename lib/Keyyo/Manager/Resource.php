@@ -26,7 +26,7 @@ namespace Keyyo\Manager;
 /**
  * Represents a resource retrieved and manipulated through the Client
  *
- * @author Jérémy Touati <jtouati@keyyo.com>
+ * @author Jérémy Touati
  */
 class Resource implements \Iterator, \ArrayAccess, \Countable
 {

@@ -24,7 +24,7 @@
 namespace Keyyo\Manager\Exception;
 
 /**
- * @author Jérémy Touati <jtouati@keyyo.com>
+ * @author Jérémy Touati
  */
 class Exception extends \Exception
 {}
