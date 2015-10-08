@@ -25,7 +25,7 @@ session_start();
 // Check state
 if (isset($_GET["state"]) && $_GET["state"] != $_SESSION["oauth_state"]) {
 	header('Content-Type: application/json');
-	die(json_encode(["error" => "invalid_state", "error_description" => "Invalid state"]));
+	die(json_encode(array("error" => "invalid_state", "error_description" => "Invalid state")));
 }
 
 // Retrieve client ID & secret
