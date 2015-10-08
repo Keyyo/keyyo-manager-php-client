@@ -1,0 +1,7 @@
+{
+  "name": "keyyo/manager-client",
+  "type": "library",
+  "autoload": {
+    "psr-4": {"Keyyo\\": "lib/Keyyo"}
+  }
+}
