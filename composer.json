@@ -1,7 +1,15 @@
 {
-  "name": "keyyo/manager-client",
-  "type": "library",
-  "autoload": {
-    "psr-4": {"Keyyo\\": "lib/Keyyo"}
-  }
+	"name": "keyyo/manager-client",
+	"description": "RESTful interface allowing you to query and configure settings for most Keyyo services",
+	"type": "library",
+	"homepage": "https://api.keyyo.com/developers",
+	"license": "MIT",
+	"keywords": ["telephony"],
+	"support": {
+		"forum": "http://forum.keyyo.com/forumdisplay.php?fid=22",
+		"docs": "https://api.keyyo.com/developers/docs/api/manager/rest"
+	},
+	"autoload": {
+		"psr-4": {"Keyyo\\": "lib/Keyyo"}
+	}
 }
