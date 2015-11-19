@@ -147,7 +147,7 @@ class Resource implements \Iterator, \ArrayAccess, \Countable
 	 */
 	public function update(array $properties = array())
 	{
-		$resource_contents = $this->client->query('POST', $this->url, $properties);
+		$resource_contents = $this->client->query($this->is_collection ? 'PUT' : 'POST', $this->url, $properties);
 		$this->initialize_from_resource_contents($resource_contents);
 	}
 
